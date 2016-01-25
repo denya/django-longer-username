@@ -25,8 +25,7 @@ def patch_user_model(model):
         if isinstance(v, MaxLengthValidator):
             v.limit_value = MAX_USERNAME_LENGTH()
 
-from django.contrib.auth.models import User
-
+User = settings.AUTH_USER_MODEL
 # https://github.com/GoodCloud/django-longer-username/issues/1
 # django 1.3.X loads User model before class_prepared signal is connected
 # so we patch model after it's prepared
